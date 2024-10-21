@@ -1,0 +1,27 @@
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+input {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    padding: 10px;
+    background-color: var(--color-boton);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.contenedor{
+    display: flex; /* Usamos flexbox */
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente */
+    height: 100vh; /* Usa la altura completa de la ventana */
+    background-color: #f8f9fa; /* Fondo opcional */
+}

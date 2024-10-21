@@ -72,11 +72,8 @@ const Home = () => {
                 ))}
             </div>
         </section>
-        <section className={Styles.carousel_container}>
-            
-        </section>
-        <section className={Styles.carousel_container}>
-            
+        <section>
+            <h3>App web de musica</h3>
         </section>
         </>
     );

@@ -20,6 +20,14 @@
     position: fixed;
     left: -250px;
 }
+.login_main{
+    margin-left: 0px;
+    padding-bottom: 0px;
+}
+.login_footer{
+    display: none;
+    background-color: #f8f9fa;
+}
 
 /*----------------Barra Lateral*/
 .barra_lateral {
@@ -96,10 +104,11 @@
     border-radius: 10px;
     background-color: var(--color-boton);
     color: var(--color-boton-texto);
+    text-decoration: none;
 }
 
 .barra_lateral .boton i {
-    min-width: 50px;
+    min-width: 35px;
     font-size: 25px;
 }
 
@@ -175,7 +184,6 @@ footer {
     transition: left 0.3s;
     width: 100%;
     bottom: 0;
-    height: 80px; /*80px*/
     font-size: 35px;
     display: flex;
     justify-content: center; /* Alinea horizontalmente al centro */
