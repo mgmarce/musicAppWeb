@@ -224,6 +224,7 @@ main {
     padding: 20px;
     background-color: #f8f9fa;
     min-height: calc(100vh - 70px);
+    padding-bottom: 80px;/* FOOTER */
 }
 
 

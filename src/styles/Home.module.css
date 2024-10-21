@@ -1,0 +1,47 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  .carousel_container {
+    width: 100%;
+    overflow: hidden;
+    max-width: 100%; /* Ajustar */
+    margin: 0 auto;
+  }
+  
+  .slider {
+    display: flex;
+    width: max-content; /* Hace que el contenedor sea tan ancho como el contenido */
+    animation: slide 80s linear infinite; /* La animación se repite infinitamente */
+  }
+  
+  .slide {
+    min-width: 150px;
+  }
+  
+  .slide img {
+    width: 200px;
+    height: 200px;
+    display: block;
+    margin: 22px;
+    border-radius: 15px;
+  }
+  
+@keyframes slide {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%); 
+    }
+}
+  
+@media (max-width: 600px) {
+    .slide img {
+        width: 150px;
+        height: 150px;
+        margin: 18px;
+    }
+}
