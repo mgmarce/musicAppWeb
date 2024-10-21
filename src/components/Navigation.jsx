@@ -1,7 +1,42 @@
-import React, { useEffect, useRef } from "react";
-import Styles from '../styles/Sidebar.module.css'
+import React, { useEffect, useRef, useState } from "react";
+import Styles from '../styles/Navigation.module.css'
+import Content from './Content'
 
-const Sidebar = () => {
+const Navigation = () => {
+    const [index, setIndex] = useState(0); 
+
+    const albums = [
+        {spotify: "https://open.spotify.com/embed/track/6wH3AP7b01vpzKYRJhreMy?utm_source=generator&theme=0" },
+        { spotify: "https://open.spotify.com/embed/track/2T04xX1PyMkyPFKBYnlVl1?utm_source=generator&theme=0" },
+        { spotify: "https://open.spotify.com/embed/track/5fj32MKLHkut2Vod1UodcU?utm_source=generator&theme=0" },
+        { spotify: "https://open.spotify.com/embed/track/7kud2YsUIgEO6L41B98Cih?utm_source=generator&theme=0" },
+        { spotify: "https://open.spotify.com/embed/track/1p80LdxRV74UKvL8gnD7ky?utm_source=generator&theme=0" },
+        { spotify: "https://open.spotify.com/embed/track/4m0q0xQ2BNl9SCAGKyfiGZ?utm_source=generator&theme=0" },
+        { spotify: "https://open.spotify.com/embed/track/0sf12qNH5qcw8qpgymFOqD?utm_source=generator&theme=0" }
+    ];
+
+    const handleClickScroll = (val) => {
+        if (index + val >= 0 && index + val < albums.length) {
+        setIndex(index + val); 
+        }
+    };
+
+    const handleKeyScroll = (e) => {
+        if (e.key === "ArrowLeft") {
+        handleClickScroll(-1);
+        }
+        if (e.key === "ArrowRight") {
+        handleClickScroll(1);
+        }
+    };
+
+    const updateDisplay = (index) => {
+        return albums[index].spotify;
+    };
+
+
+      //*********************************************** */
+
     const logoRef = useRef(null);
     const barraLateralRef = useRef(null);
     const spansRef = useRef([]);
@@ -13,7 +48,7 @@ const Sidebar = () => {
         const barraLateral = barraLateralRef.current;
         const spans = spansRef.current;
         const menu = menuRef.current;
-        //const main = mainRef.current;
+        const main = mainRef.current;
 
         const handleMenuClick = () => {
             barraLateral.classList.toggle(Styles.max_barra_lateral);
@@ -26,7 +61,7 @@ const Sidebar = () => {
             }
             if (window.innerWidth <= 320) {
                 barraLateral.classList.add(Styles.mini_barra_lateral);
-                //main.classList.add(Styles.min_main);
+                main.classList.add(Styles.min_main);
                 spans.forEach((span) => {
                     span.classList.add(Styles.oculto);
                 });
@@ -35,7 +70,7 @@ const Sidebar = () => {
 
         const handleLogoClick = () => {
             barraLateral.classList.toggle(Styles.mini_barra_lateral);
-            //main.classList.toggle(Styles.min_main);
+            main.classList.toggle(Styles.min_main);
             spans.forEach((span) => {
                 span.classList.toggle(Styles.oculto);
             });
@@ -48,7 +83,7 @@ const Sidebar = () => {
             menu.removeEventListener("click", handleMenuClick);
             logo.removeEventListener("click", handleLogoClick);
         };
-    }, []); // La dependencia vacía asegura que esto se ejecute solo una vez al montar el componente
+    }, []);
 
     return (
         <>
@@ -58,8 +93,9 @@ const Sidebar = () => {
                     <img className={Styles.logo} src="img/logo.png" alt="" id="logo" ref={logoRef} />
                     <span className={Styles.info} ref={(el) => (spansRef.current[0] = el)}>K<span className={Styles.dot}>•</span>Music</span>
                 </div>
-                <button className={Styles.boton} ref={menuRef}>
-                    <span className={Styles.info} ref={(el) => (spansRef.current[1] = el)}>Create new</span>
+                <button className={Styles.boton}>
+                    <i className="bi bi-box-arrow-in-right"></i>
+                    <span className={Styles.info} ref={(el) => (spansRef.current[1] = el)}>Iniciar sesión</span>
                 </button>
             </div>
 
@@ -143,17 +179,25 @@ const Sidebar = () => {
                 </ul>
             </nav>
         </aside>
-        <footer className={[Styles.footer_container, 'd-flex', 'justify-content-center'].join(' ')}>
-            <i className="bi bi-skip-start-fill fs-3 scroll-left"></i>
-            <iframe className="spotify_widget" style={{ borderRadius: '12px' }} src="https://open.spotify.com/embed/track/6wH3AP7b01vpzKYRJhreMy?utm_source=generator&theme=0" width="90%"
-                frameborder="0" loading="lazy"></iframe>
-            <i className="bi bi-skip-end-fill fs-3 scroll-right"></i>
+        <main ref={mainRef}>
+            <nav className="navbar bg-body-tertiary ">
+                <div className={Styles.menu} ref={menuRef}>
+                    <i className="bi bi-list"></i>
+                    <i className="bi bi-x"></i>
+                </div>
+            </nav>
+            <Content/>
+        </main>
+
+        <footer className={`${Styles.footer_container} d-flex justify-content-center align-items-center`}>
+            <i className={`bi bi-skip-start-fill ${index === 0 ? Styles.hide_arrow : ''}`} onClick={() => handleClickScroll(-1)}></i>
+            <iframe id="spotify_widget" style={{ borderRadius: '12px', width: '90%', height: '80px', margin: '0', padding: '0' }} src={updateDisplay(index)} allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" ></iframe>
+            <i className={`bi bi-skip-end-fill ${index === albums.length - 1 ? Styles.hide_arrow : ''}`} onClick={() => handleClickScroll(1)}></i>
         </footer>
+
         </>
-        
     );
 };
 
 
-export default Sidebar;
-//C:\xampp\htdocs\Bootcamp\music_app_web\src\styles
+export default Navigation;
