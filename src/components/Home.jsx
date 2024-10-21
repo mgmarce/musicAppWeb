@@ -1,13 +1,13 @@
 import React from 'react';
 import Styles from '../styles/Home.module.css';
-import img1 from '../../public/img/artista1.jpg'
-import img2 from '../../public/img/artista2.jpeg'
-import img3 from '../../public/img/artista5.jpg'
-import img4 from '../../public/img/artista4.jpeg'
-import img5 from '../../public/img/artista3.jpeg'
-import img6 from '../../public/img/artista11.jpeg'
-import img7 from '../../public/img/artista7.png'
-import img8 from '../../public/img/artista1.jpg'
+import img1 from '../img/artista1.jpg'
+import img2 from '../img/artista2.jpeg'
+import img3 from '../img/artista5.jpg'
+import img4 from '../img/artista4.jpeg'
+import img5 from '../img/artista3.jpeg'
+import img6 from '../img/artista11.jpeg'
+import img7 from '../img/artista7.png'
+import img8 from '../img/artista1.jpg'
 
 
 const imgData = [
