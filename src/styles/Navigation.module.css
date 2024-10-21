@@ -16,6 +16,11 @@
     z-index: 100;
 }
 
+.sidebar_ocultar{
+    position: fixed;
+    left: -250px;
+}
+
 /*----------------Barra Lateral*/
 .barra_lateral {
     position: fixed;

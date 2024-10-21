@@ -1,6 +1,9 @@
 import React, { useEffect, useRef, useState } from "react";
-import Styles from '../styles/Navigation.module.css'
-import Content from './Content'
+import { BrowserRouter as Router, Route, Routes, Link, useLocation } from 'react-router-dom';
+import Styles from '../styles/Navigation.module.css';
+import Home from './Home';
+import Login from './Login';
+import Explore from './Explore';
 
 const Navigation = () => {
     const [index, setIndex] = useState(0); 
@@ -85,6 +88,16 @@ const Navigation = () => {
         };
     }, []);
 
+    /*const location = useLocation();
+    useEffect(() => {
+        const barraLateral = barraLateralRef.current;
+        if (location.pathname === '/login') {
+            barraLateral.classList.add(Styles.sidebar_ocultar);
+        } else {
+            barraLateral.classList.remove(Styles.sidebar_ocultar);
+        }
+    }, [location.pathname]);*/
+
     return (
         <>
         <aside className={Styles.barra_lateral} ref={barraLateralRef}>
@@ -109,22 +122,22 @@ const Navigation = () => {
                         </a>
                     </li>
                     <li>
-                        <a href="#">
+                        <Link to="/">
                             <i className="bi bi-folder2-open"></i>
                             <span>Biblioteca</span>
-                        </a>
+                        </Link>
                     </li>
                     <li>
-                        <a href="#">
+                        <Link to="/login">
                             <i className="bi bi-boombox"></i>
                             <span>Radio</span>
-                        </a>
+                        </Link>
                     </li>
                     <li>
-                        <a href="#">
+                        <Link to="/explore">
                             <i className="bi bi-file-earmark-play"></i>
                             <span>Videos Musicales</span>
-                        </a>
+                        </Link>
                     </li>
                     <span className={Styles.info} ref={(el) => (spansRef.current[3] = el)}>Biblioteca personal</span>
                     <li>
@@ -186,7 +199,11 @@ const Navigation = () => {
                     <i className="bi bi-x"></i>
                 </div>
             </nav>
-            <Content/>
+            <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/explore" element={<Explore />} />
+                <Route path="/login" element={<Login />} />
+            </Routes>
         </main>
 
         <footer className={`${Styles.footer_container} d-flex justify-content-center align-items-center`}>

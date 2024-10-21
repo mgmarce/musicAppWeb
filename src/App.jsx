@@ -1,4 +1,5 @@
 import 'bootstrap-icons/font/bootstrap-icons.css';
+import { BrowserRouter as Router } from 'react-router-dom';
 import './App.css'
 import Navigation from './components/Navigation'
 //import MainContent from './components/Content'
@@ -7,7 +8,10 @@ function App() {
 
   return (
     <>
-      <Navigation/>
+    <Router>
+    <Navigation/>
+    </Router>
+      
     </>
   )
 }
