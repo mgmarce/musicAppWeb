@@ -28,6 +28,10 @@
     display: none;
     background-color: #f8f9fa;
 }
+.login_nav{
+    display: none;
+    background-color: #f8f9fa;
+}
 
 /*----------------Barra Lateral*/
 .barra_lateral {
@@ -70,6 +74,7 @@
     margin-bottom: 40px;
     display: flex;
     align-items: center;
+    cursor: pointer;
 }
 
 .barra_lateral .nombre_pagina .logo {
@@ -83,6 +88,15 @@
     font-size: 25px;
 }
 
+.barra_lateral .nombre_pagina i {
+    font-size: 15px;
+    
+}
+.icono_oculto{
+    opacity: 0;
+    width: 0;
+}
+
 .dot {
     color: var(--color-dot);
     font-weight: bold;
@@ -91,6 +105,7 @@
 .barra_lateral .nombre_pagina span.dot {
     margin-left: 0px;
 }
+
 
 /*------------> Botón*/
 .barra_lateral .boton {

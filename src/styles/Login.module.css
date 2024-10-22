@@ -1,4 +1,4 @@
-form {
+/*form {
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -10,18 +10,39 @@ input {
     border-radius: 4px;
 }
 
-button {
+
+.contenedor{
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    height: 100vh;
+    background-color: #f8f9fa; 
+}*/
+
+.card_estilo{
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    height: 100vh; 
+}
+.card_body{
+    width: 600px;
+}
+.card_contenido img{
+    text-align: center;
+    width: 90px;
+}
+
+.card_linea{
+    padding: 2px;
+    background-color: #808080;
+}
+
+.card_button {
     padding: 10px;
     background-color: var(--color-boton);
     color: white;
     border: none;
     border-radius: 4px;
     cursor: pointer;
-}
-.contenedor{
-    display: flex; /* Usamos flexbox */
-    justify-content: center; /* Centra horizontalmente */
-    align-items: center; /* Centra verticalmente */
-    height: 100vh; /* Usa la altura completa de la ventana */
-    background-color: #f8f9fa; /* Fondo opcional */
 }

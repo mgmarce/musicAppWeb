@@ -47,6 +47,8 @@ const Navigation = () => {
     const menuRef = useRef(null);
     const mainRef = useRef(null);
     const footerRef = useRef(null);
+    const navRef = useRef(null);
+    const flechaRef = useRef(null);
 
     useEffect(() => {
         const logo = logoRef.current;
@@ -54,6 +56,7 @@ const Navigation = () => {
         const spans = spansRef.current;
         const menu = menuRef.current;
         const main = mainRef.current;
+        const icono = flechaRef.current//Despues cambiar
 
         const handleMenuClick = () => {
             barraLateral.classList.toggle(Styles.max_barra_lateral);
@@ -68,7 +71,7 @@ const Navigation = () => {
                 barraLateral.classList.add(Styles.mini_barra_lateral);
                 main.classList.add(Styles.min_main);
                 spans.forEach((span) => {
-                    span.classList.add(Styles.oculto);
+                    span.classList.add(Styles.icono_oculto);
                 });
             }
         };
@@ -76,6 +79,7 @@ const Navigation = () => {
         const handleLogoClick = () => {
             barraLateral.classList.toggle(Styles.mini_barra_lateral);
             main.classList.toggle(Styles.min_main);
+            icono.classList.toggle(Styles.icono_oculto)
             spans.forEach((span) => {
                 span.classList.toggle(Styles.oculto);
             });
@@ -96,14 +100,18 @@ const Navigation = () => {
         const barraLateral = barraLateralRef.current;
         const main = mainRef.current;
         const footer = footerRef.current;
+        const nav = navRef.current
+
         if (location.pathname === '/login') {
             barraLateral.classList.add(Styles.sidebar_ocultar);
             main.classList.add(Styles.login_main);
             footer.classList.add(Styles.login_footer);
+            nav.classList.add(Styles.login_nav);
         } else {
             barraLateral.classList.remove(Styles.sidebar_ocultar);
             main.classList.remove(Styles.login_main);
             footer.classList.remove(Styles.login_footer);
+            nav.classList.remove(Styles.login_nav);
         }
     }, [location.pathname]);
 
@@ -111,9 +119,10 @@ const Navigation = () => {
         <>
         <aside className={Styles.barra_lateral} ref={barraLateralRef}>
             <div>
-                <div className={Styles.nombre_pagina}>
-                    <img className={Styles.logo} src={logoImg} alt="" id="logo" ref={logoRef} />
+                <div className={Styles.nombre_pagina} ref={logoRef}>
+                    <img className={Styles.logo} src={logoImg} alt="" id="logo" />
                     <span className={Styles.info} ref={(el) => (spansRef.current[0] = el)}>K<span className={Styles.dot}>•</span>Music</span>
+                    <i className="bi bi-arrow-left-circle-fill" ref={flechaRef}></i>
                 </div>
                 <Link to="/login" className={Styles.boton}>
                     <i className="bi bi-box-arrow-in-right"></i>
@@ -202,12 +211,13 @@ const Navigation = () => {
             </nav>
         </aside>
         <main ref={mainRef}>
-            <nav className="navbar bg-body-tertiary ">
-                <div className={Styles.menu} ref={menuRef}>
-                    <i className="bi bi-list"></i>
-                    <i className="bi bi-x"></i>
-                </div>
+            <nav ref={navRef} className="navbar bg-body-tertiary">
+                
             </nav>
+            <div className={Styles.menu} ref={menuRef}>
+                <i className="bi bi-list"></i>
+                <i className="bi bi-x"></i>
+            </div>
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/explore" element={<Explore />} />
