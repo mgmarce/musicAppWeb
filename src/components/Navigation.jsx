@@ -215,7 +215,7 @@ const Navigation = () => {
             </Routes>
         </main>
 
-        <footer ref={footerRef} className={`${Styles.footer_container} d-flex justify-content-center align-items-center`}>
+        <footer ref={footerRef} className={`${Styles.footer_container} align-items-center`}>
             <i className={`bi bi-skip-start-fill ${index === 0 ? Styles.hide_arrow : ''}`} onClick={() => handleClickScroll(-1)}></i>
             <iframe id="spotify_widget" style={{ borderRadius: '12px', width: '90%', height: '80px', margin: '0', padding: '0' }} src={updateDisplay(index)} allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" ></iframe>
             <i className={`bi bi-skip-end-fill ${index === albums.length - 1 ? Styles.hide_arrow : ''}`} onClick={() => handleClickScroll(1)}></i>

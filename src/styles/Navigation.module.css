@@ -84,7 +84,7 @@
 }
 
 .dot {
-    color: var(--color-select);
+    color: var(--color-dot);
     font-weight: bold;
 }
 
@@ -96,13 +96,13 @@
 .barra_lateral .boton {
     width: 100%;
     height: 45px;
-    margin-bottom: 20px;
+    margin: 10px 0px;
     display: flex;
     align-items: center;
     justify-content: center;
     border: none;
     border-radius: 10px;
-    background-color: var(--color-boton);
+    background-color: var(--background-color);
     color: var(--color-boton-texto);
     text-decoration: none;
 }
@@ -216,12 +216,6 @@ iframe{
     border: none;
 }
 
-
-main{
-    margin-left: 250px;
-    padding: 20px;
-    transition: margin-left 0.5s ease;
-}
 main.min_main{
     margin-left: 80px;
 }
@@ -229,10 +223,11 @@ main.min_main{
 /* Estilos generales del main */
 main {
     margin-left: 250px; 
-    padding: 20px;
+    padding: 10px 10px 10px 5px;
     background-color: #f8f9fa;
     min-height: calc(100vh - 70px);
     padding-bottom: 80px;/* FOOTER */
+    transition: margin-left 0.5s ease;
 }
 
 

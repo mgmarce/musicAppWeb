@@ -6,17 +6,14 @@ const Login = () => {
 
     const { register, handleSubmit, formState: { errors } } = useForm();
 
-    // Función que se ejecuta al enviar el formulario
     const onSubmit = (data) => {
         console.log(data);
-        // Aquí puedes realizar acciones adicionales, como enviar los datos a una API
     };
    
     return (
         <section className={Styles.contenedor}>
             <form onSubmit={handleSubmit(onSubmit)} style={{ maxWidth: '400px', margin: 'auto' }}>
             <h2>Registrate</h2>
-
             <div>
                 <label htmlFor="name">Nombre:</label>
                 <input
@@ -25,8 +22,6 @@ const Login = () => {
                 />
                 {errors.name && <span style={{ color: 'red' }}>{errors.name.message}</span>}
             </div>
-
-            {/* Campo de correo electrónico */}
             <div>
                 <label htmlFor="email">Correo Electrónico:</label>
                 <input
@@ -43,7 +38,6 @@ const Login = () => {
                 {errors.email && <span style={{ color: 'red' }}>{errors.email.message}</span>}
             </div>
 
-            {/* Campo de contraseña */}
             <div>
                 <label htmlFor="password">Contraseña:</label>
                 <input
@@ -60,7 +54,6 @@ const Login = () => {
                 {errors.password && <span style={{ color: 'red' }}>{errors.password.message}</span>}
             </div>
 
-            {/* Botón de envío */}
             <button type="submit">Registrar</button>
         </form>
         </section>
